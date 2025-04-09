@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- AdSense Head Script (Place ONCE in <head>) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978197531989330" crossorigin="anonymous"></script>
+    
+    <!-- Ad Styles -->
+    <style>
+        /* Universal Ad Container */
+        .ad-unit {
+            margin: 15px 0;
+            padding: 10px;
+            text-align: center;
+            overflow: hidden;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+
+        /* Responsive Ad Settings */
+        .responsive-ad ins {
+            display: block !important;
+            margin: 0 auto;
+        }
+
+
+        /* Anchor Ad */
+        .anchor-ad {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .ad-unit {
+                margin: 10px 0;
+                padding: 5px;
+            }
+            .anchor-ad {
+                position: static;
+                box-shadow: none;
+            }
+            .responsive-ad ins {
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- 1. Top Leaderboard Ad (Homepage Only) -->
+    <b:if cond='data:blog.url == data:blog.homepageUrl'>
+    <div class="ad-unit">
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-2978197531989330"
+             data-ad-slot="YOUR_LEADERBOARD_SLOT"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    </b:if>
+
+
+    <!-- 2. Responsive Sidebar Ad -->
+    <div class="ad-unit" style="float:right;width:300px;margin:20px;">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-2978197531989330"
+             data-ad-slot="YOUR_SIDEBAR_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+
+    <!-- 3. In-Article Ad (Post Pages Only) -->
+    <b:if cond='data:blog.pageType == "item"'>
+    <div class="ad-unit" style="clear:both;margin:25px 0;">
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-2978197531989330"
+             data-ad-slot="YOUR_INARTICLE_SLOT"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    </b:if>
+
+
+    <!-- 4. Bottom Anchor Ad -->
+    <div class="ad-unit anchor-ad">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-2978197531989330"
+             data-ad-slot="YOUR_ANCHOR_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+
+    <!-- Ad Initialization Script -->
+    <script>
+    // Load ads after content
+    window.addEventListener('load', function() {
+        // Initialize all ads
+        var ads = document.getElementsByClassName('adsbygoogle');
+        for (var i = 0; i < ads.length; i++) {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+        
+        // Mobile anchor ad fix
+        if(window.innerWidth <= 768) {
+            document.querySelector('.anchor-ad').style.position = 'static';
+        }
+    });
+    </script>
+
+
+</body>
+</html>
